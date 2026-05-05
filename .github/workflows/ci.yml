@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "AKIAPHANTOMTEST00009ACTIONSLOG"
+      - run: echo "artifact_secret=AKIAPHANTOMTEST00010ARTIFACT" > secret.txt && zip secrets.zip secret.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: leaked-artifact
+          path: secrets.zip
